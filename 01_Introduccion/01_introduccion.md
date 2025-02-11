@@ -129,3 +129,17 @@ Para programar en Java con **Visual Studio Code (VS Code)**, es necesario instal
      javac HolaMundo.java
      java HolaMundo
      ```
+
+
+## 1.5. Configuración de Java en Intellij
+
+Para programar en Java con **Intellij** desde su sitio oficial: [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)
+
+- Seleccionamos download.
+- Seleccionamos **Community Edition**
+- Apretamos en exe (Windows)
+
+![Intellij](./images/intellij1.png "Configuración de Opciones")
+![Intellij](./images/intellij2.png "Directorio de instalación")
+
+- Por ultimo debemos de reiniciar el ordenador porque hay varias opciones que de lo contrario no se podrían congirurar.
