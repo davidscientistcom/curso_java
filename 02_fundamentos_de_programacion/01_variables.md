@@ -222,14 +222,6 @@ double numeroDecimal = numeroEntero;  // Se convierte automáticamente a 10.0
   double valorDouble = valorFloat;  // 5.75f se convierte automáticamente a 5.75
   ```
 
-- **De *int* a *float***:  
-  También es una conversión widening. Sin embargo, ten en cuenta que un *float* tiene una precisión limitada (aproximadamente 7 dígitos decimales), por lo que valores enteros muy grandes pueden no representarse exactamente, aunque la conversión se realice de forma automática.
-
-  ```java
-  int valorEntero = 123456789;
-  float valorFloat2 = valorEntero;  // Conversión implícita
-  System.out.println(valorFloat2);  // Puede no mostrar el número exacto debido a la precisión limitada de float
-  ```
 
 
 ## 2. Conversión Explícita (Narrowing)
