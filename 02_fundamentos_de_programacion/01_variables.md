@@ -200,35 +200,142 @@ Las variables también se utilizan para tomar decisiones en un programa. Para el
 
 Muchas veces, necesitamos transformar una variable de un tipo a otro. Esto se denomina **casting** o conversión de tipos, y es muy importante para asegurar que las operaciones se realicen de forma correcta y sin pérdidas inesperadas.
 
-### Tipos de Conversión
 
-1. **Conversión Implícita (Widening):**  
-   Ocurre cuando se asigna un valor de un tipo de menor capacidad a uno de mayor capacidad.  
-   *Ejemplo:*
-   ```java
-   int numeroEntero = 10;
-   double numeroDecimal = numeroEntero;  // La conversión se hace automáticamente, 10 se convierte en 10.0.
-   ```
+## 1. Conversión Implícita (Widening)
 
-2. **Conversión Explícita (Narrowing):**  
-   Se requiere cuando se convierte un valor de mayor capacidad a uno de menor, lo que puede conllevar pérdida de información. Se realiza indicando el tipo destino entre paréntesis.  
-   *Ejemplo:*
-   ```java
-   double valorDecimal = 9.99;
-   int valorEntero = (int) valorDecimal;  // Se trunca la parte decimal, obteniendo 9.
-   ```
+Se produce cuando se asigna un valor de un tipo de menor capacidad a uno de mayor capacidad, sin necesidad de indicar ningún cast explícito.
 
-3. **Conversiones entre `char` e `int`:**  
-   Dado que un `char` es en realidad un número (código Unicode), se pueden hacer conversiones en ambos sentidos:
-   ```java
-   char letra = 'A';
-   int codigo = letra;  // Implicitamente se convierte a su valor numérico (65).
-   
-   int otroCodigo = 66;
-   char otraLetra = (char) otroCodigo;  // Se obtiene 'B'.
-   ```
+### Ejemplo con enteros y *double*:
 
-> **Precaución:**  
-> Siempre que se realice una conversión explícita, es importante tener en cuenta la posible pérdida de datos (por ejemplo, la parte decimal al convertir de `double` a `int`).
+```java
+int numeroEntero = 10;
+double numeroDecimal = numeroEntero;  // Se convierte automáticamente a 10.0
+```
+
+### Ejemplo con *float* y *double*:
+
+- **De *float* a *double***:  
+  La conversión es implícita, ya que un *double* tiene mayor precisión y rango que un *float*.
+
+  ```java
+  float valorFloat = 5.75f;
+  double valorDouble = valorFloat;  // 5.75f se convierte automáticamente a 5.75
+  ```
+
+- **De *int* a *float***:  
+  También es una conversión widening. Sin embargo, ten en cuenta que un *float* tiene una precisión limitada (aproximadamente 7 dígitos decimales), por lo que valores enteros muy grandes pueden no representarse exactamente, aunque la conversión se realice de forma automática.
+
+  ```java
+  int valorEntero = 123456789;
+  float valorFloat2 = valorEntero;  // Conversión implícita
+  System.out.println(valorFloat2);  // Puede no mostrar el número exacto debido a la precisión limitada de float
+  ```
 
 
+## 2. Conversión Explícita (Narrowing)
+
+Se requiere cuando se asigna un valor de un tipo de mayor capacidad a uno de menor, lo que puede conllevar pérdida de información. Para ello se utiliza un cast indicando el tipo destino entre paréntesis.
+
+### Ejemplo con *double* a *int*:
+
+```java
+double valorDecimal = 9.99;
+int valorEntero = (int) valorDecimal;  // Se trunca la parte decimal, obteniendo 9
+```
+
+### Ejemplo con *double* a *float*:
+
+- Dado que *double* tiene mayor precisión que *float*, la conversión requiere un cast explícito:
+
+  ```java
+  double numeroDouble = 3.141592653589793;
+  float numeroFloat = (float) numeroDouble;  // Se puede perder precisión
+  System.out.println(numeroFloat);  // Imprime, por ejemplo, 3.1415927
+  ```
+
+
+
+## 3. Conversión entre *char* e *int*
+
+Dado que un *char* en Java se representa internamente como un valor numérico (código Unicode), se pueden hacer conversiones en ambos sentidos:
+
+```java
+char letra = 'A';
+int codigo = letra;  // Conversión implícita; 'A' equivale a 65 en Unicode
+
+int otroCodigo = 66;
+char otraLetra = (char) otroCodigo;  // Se obtiene 'B'
+```
+
+
+
+## 4. División Entera vs. División Decimal
+
+La forma en que Java realiza la división depende de los tipos de los operandos:
+
+### División Entera
+
+Cuando ambos operandos son enteros (por ejemplo, `int`), se realiza una división entera en la que el resultado es otro entero, y se trunca la parte decimal.
+
+```java
+int a = 10;
+int b = 3;
+int divisionEntera = a / b;  // El resultado es 3, ya que se trunca 3.3333...
+System.out.println(divisionEntera);
+```
+
+### División Decimal
+
+Si al menos uno de los operandos es de tipo *float* o *double*, la división se realiza en punto flotante, y se conserva la parte decimal.
+
+- **Ejemplo con *double*:**
+
+  ```java
+  double x = 10.0;
+  int y = 3;
+  double divisionDecimal = x / y;  // Resultado: 3.3333333333333335
+  System.out.println(divisionDecimal);
+  ```
+
+- **Ejemplo con *float*:**
+
+  ```java
+  int m = 10;
+  float n = 3.0f;
+  float divisionDecimalFloat = m / n;  // Resultado: 3.3333333
+  System.out.println(divisionDecimalFloat);
+  ```
+
+### Conversión Implícita en Operaciones
+
+Es importante recordar que, en expresiones aritméticas, si uno de los operandos es de un tipo más amplio, se realiza una conversión implícita. Por ejemplo:
+
+```java
+int a = 10;
+int b = 3;
+double resultado = a / b;  // Aunque 'resultado' es double, la división se efectúa como división entera (10/3 = 3)
+System.out.println(resultado);  // Imprime 3.0
+```
+
+Para evitarlo y obtener un resultado decimal, es necesario asegurarse de que al menos uno de los operandos sea de tipo *float* o *double*:
+
+```java
+int a = 10;
+int b = 3;
+double resultado = (double) a / b;  // Aquí se convierte 'a' a double: 10.0 / 3 = 3.3333333333333335
+System.out.println(resultado);
+```
+
+
+
+## Resumen
+
+- **Conversión Implícita (Widening):**  
+  Se da al asignar un valor de un tipo de menor capacidad a uno de mayor, por ejemplo, de *int* a *double* o de *float* a *double*.
+
+- **Conversión Explícita (Narrowing):**  
+  Se requiere cuando se asigna un valor de mayor capacidad a uno de menor, por ejemplo, de *double* a *int* o de *double* a *float*, lo que puede conllevar pérdida de información.
+
+- **División Entera vs. Decimal:**  
+  - **División Entera:** Si ambos operandos son enteros, el resultado es un entero (se trunca la parte decimal).  
+  - **División Decimal:** Si al menos uno de los operandos es *float* o *double*, el resultado es un número en punto flotante, conservando la parte decimal.
