@@ -197,3 +197,31 @@ public class EjemploLecturaConsola {
 > - **Métodos de lectura:** Se usan `nextLine()`, `nextInt()` y `nextDouble()` según el tipo de dato que se desea leer.
 > - **Cierre del Scanner:** Al finalizar, se cierra el objeto Scanner con `sc.close();` para liberar recursos.
 > - **Atención con el salto de línea:** Tras usar `nextInt()` o `nextDouble()`, es recomendable consumir el salto de línea residual con un `sc.nextLine()` para evitar problemas en la lectura de líneas completas posteriormente.
+Cuando usas métodos como `nextInt()` o `nextDouble()` de la clase `Scanner`, éstos leen únicamente el valor numérico y dejan en el búfer de entrada el carácter de nueva línea (`\n`) que se genera al pulsar Enter. Esto significa que, tras leer un número, el salto de línea sigue "pendiente" en el flujo de entrada.
+
+Si inmediatamente después llamas a `nextLine()` para leer una línea completa, éste leerá ese salto de línea residual en lugar de esperar una nueva entrada del usuario, devolviendo una cadena vacía. Para evitar este comportamiento, es recomendable "consumir" o descartar ese salto de línea llamando a `sc.nextLine()` después de `nextInt()` o `nextDouble()` y antes de usar `nextLine()` para leer una línea de texto.
+
+**Ejemplo:**
+
+```java
+import java.util.Scanner;
+
+public class EjemploScanner {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Introduce tu edad: ");
+        int edad = sc.nextInt();
+        
+        // Consumir el salto de línea pendiente
+        sc.nextLine();
+        
+        System.out.print("Introduce tu nombre completo: ");
+        String nombre = sc.nextLine();
+        
+        System.out.println("Edad: " + edad + ", Nombre: " + nombre);
+        
+        sc.close();
+    }
+}
+```
