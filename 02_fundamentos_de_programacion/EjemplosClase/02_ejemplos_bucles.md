@@ -74,3 +74,28 @@ public class Main {
     }
 }
 ```
+```java
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Introduce el valor de inicio: ");
+        int inicio = scanner.nextInt();
+
+        System.out.print("Introduce el valor de fin: ");
+        int fin = scanner.nextInt();
+
+        for (int i = inicio; i <= fin; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i+ " ");
+            }
+        }
+
+        scanner.close();
+    }
+
+}
+```
