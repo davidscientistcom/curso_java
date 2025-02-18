@@ -270,3 +270,65 @@ public class EliminarConCondicion {
 }
 ```
 
+## Ejemplo completo:
+
+```JAVA
+import java.util.ArrayList;
+import java.util.List;
+
+public class OperacionesArrayList {
+    public static void main(String[] args) {
+        // Crear una lista de números
+        List<Integer> numeros = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numeros.add(i);
+        }
+        System.out.println("Lista original: " + numeros);
+
+        // Obtener un elemento específico
+        int elemento = numeros.get(4); // Obtiene el elemento en la posición 4
+        System.out.println("Elemento en la posición 4: " + elemento);
+
+        // Eliminar un elemento por índice
+        numeros.remove(2); // Elimina el elemento en la posición 2
+        System.out.println("Lista después de eliminar el índice 2: " + numeros);
+
+        // Eliminar un elemento por valor
+        numeros.remove(Integer.valueOf(7)); // Elimina el número 7
+        System.out.println("Lista después de eliminar el número 7: " + numeros);
+
+        // Recorrer con un bucle for-each
+        System.out.println("Recorriendo con for-each:");
+        for (int num : numeros) {
+            System.out.println("Número: " + num);
+        }
+
+        // Recorrer con un bucle for clásico
+        System.out.println("Recorriendo con for clásico:");
+        for (int i = 0; i < numeros.size(); i++) {
+            System.out.println("Índice " + i + ", Número: " + numeros.get(i));
+        }
+
+        // Recorrer con un bucle while
+        System.out.println("Recorriendo con while:");
+        int i = 0;
+        while (i < numeros.size()) {
+            System.out.println("Número: " + numeros.get(i));
+            i++;
+        }
+
+        // Filtrar elementos mayores a 5
+        System.out.println("Números mayores a 5:");
+        for (int num : numeros) {
+            if (num > 5) {
+                System.out.println(num);
+            }
+        }
+
+        // Eliminar elementos pares usando removeIf
+        numeros.removeIf(n -> n % 2 == 0);
+        System.out.println("Lista después de eliminar números pares: " + numeros);
+    }
+}
+
+```
