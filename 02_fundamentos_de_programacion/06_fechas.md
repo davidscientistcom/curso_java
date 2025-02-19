@@ -94,6 +94,8 @@ if (fecha1.isBefore(fecha2)) {
 
 Para mostrar una fecha en un formato específico o convertir una cadena a una fecha, se utiliza la clase **DateTimeFormatter**.
 
+[Formato de fechas:] (https://code2care.org/java/list-of-java-simple-date-formats/)
+
 ### 4.1 Formateo de Fechas
 
 ```java
