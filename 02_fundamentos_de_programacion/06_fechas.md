@@ -158,3 +158,96 @@ public class EjemploFechas {
     }
 }
 ```
+
+# Formateo de fechas en Java
+
+Java ofrece varias formas de formatear fechas, principalmente a través de la clase `SimpleDateFormat` (Java legacy) y la moderna API de fecha y hora (`java.time` introducida en Java 8).
+
+## SimpleDateFormat (Java legacy)
+
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class EjemploFormateoFechas {
+    public static void main(String[] args) {
+        Date fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String fechaFormateada = formato.format(fecha);
+        System.out.println(fechaFormateada);
+    }
+}
+```
+
+## Modern Java (java.time)
+
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class EjemploFormateoModerno {
+    public static void main(String[] args) {
+        LocalDateTime ahora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String fechaFormateada = ahora.format(formato);
+        System.out.println(fechaFormateada);
+    }
+}
+```
+
+## Patrones de formato más comunes
+
+| Símbolo | Significado | Ejemplo |
+|---------|-------------|---------|
+| `yyyy` | Año con 4 dígitos | 2025 |
+| `yy` | Año con 2 dígitos | 25 |
+| `MM` | Mes en número (01-12) | 02 |
+| `MMM` | Mes abreviado | Feb |
+| `MMMM` | Nombre completo del mes | Febrero |
+| `dd` | Día del mes (01-31) | 20 |
+| `E` | Día de la semana abreviado | Jue |
+| `EEEE` | Nombre completo del día | Jueves |
+| `HH` | Hora en formato 24h (00-23) | 13 |
+| `hh` | Hora en formato 12h (01-12) | 01 |
+| `mm` | Minutos (00-59) | 30 |
+| `ss` | Segundos (00-59) | 45 |
+| `a` | AM/PM | PM |
+| `z` | Zona horaria | GMT |
+
+## Ejemplos prácticos
+
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class EjemplosFormato {
+    public static void main(String[] args) {
+        LocalDateTime fecha = LocalDateTime.now(); // 20/02/2025 14:30:25
+        
+        // Diferentes formatos con ejemplos
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))); 
+        // 20/02/2025
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); 
+        // 2025-02-20
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy"))); 
+        // Jueves, 20 de febrero de 2025
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("hh:mm a"))); 
+        // 02:30 PM
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("HH:mm:ss"))); 
+        // 14:30:25
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("dd MMM yy"))); 
+        // 20 Feb 25
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"))); 
+        // 14:30:25.123 (con milisegundos)
+        
+        System.out.println(fecha.format(DateTimeFormatter.ofPattern("EEEE 'en la semana' w 'del año'"))); 
+        // Jueves en la semana 8 del año
+    }
+}
+```
