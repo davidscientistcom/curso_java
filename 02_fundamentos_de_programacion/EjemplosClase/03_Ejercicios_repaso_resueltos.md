@@ -59,6 +59,76 @@ public class CalculadoraSimple {
 }
 ```
 
+## Ejemplo anterior refactorizado:
+```Java
+import java.util.Scanner;
+
+public class Main {
+
+    public static int getOption(Scanner scanner){
+
+        System.out.println("Elige una operación:");
+        System.out.println("1. Suma");
+        System.out.println("2. Resta");
+        System.out.println("3. Multiplicación");
+        System.out.println("4. División");
+        System.out.print("Tu elección (1-4): ");
+        return scanner.nextInt();
+    }
+
+    public static double divide(double num1, double num2){
+        double resultado = 0;
+        if (num2 != 0) {
+            resultado = num1 / num2;
+        } else {
+            System.out.println("Error: No se puede dividir por cero");
+        }
+        return resultado;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Calculadora Simple");
+        System.out.print("Introduce el primer número: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Introduce el segundo número: ");
+        double num2 = scanner.nextDouble();
+
+        int opcion = getOption(scanner);
+
+        double resultado = 0;
+        String operacion = "";
+
+        switch (opcion) {
+            case 1:
+                resultado = num1 + num2;
+                operacion = "suma";
+                break;
+            case 2:
+                resultado = num1 - num2;
+                operacion = "resta";
+                break;
+            case 3:
+                resultado = num1 * num2;
+                operacion = "multiplicación";
+                break;
+            case 4:
+                resultado = divide(num1, num2);
+                operacion = "división";
+                break;
+            default:
+                System.out.println("Opción no válida");
+                return;
+        }
+
+        System.out.println("El resultado de la " + operacion + " es: " + resultado);
+        scanner.close();
+    }
+}
+```
+
 
 ## Ejemplo de adivinar el número
 ```Java
@@ -121,7 +191,8 @@ public class ConversorTemperatura {
         System.out.print("Elige una opción (1-6): ");
         
         int opcion = scanner.nextInt();
-        double temperatura, resultado;
+        double temperatura =0.0;
+        double resultado = 0.0;
         
         System.out.print("Introduce la temperatura: ");
         temperatura = scanner.nextDouble();

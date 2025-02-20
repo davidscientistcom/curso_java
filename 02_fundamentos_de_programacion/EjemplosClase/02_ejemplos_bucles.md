@@ -99,3 +99,101 @@ public class Main {
 
 }
 ```
+```Java
+
+// Esto es un ejemplo de código
+public class Main {
+
+    public static void imprime(int[][] matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int n_filas = 8;
+        int n_columnas = 8;
+        int[][] matriz = new int[n_filas][n_columnas];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (i<=j)   {
+                    matriz[i][j] = 0;
+                }
+                else{
+                    matriz[i][j] = 1;
+                }
+            }
+        }
+
+        imprime(matriz);
+
+    }
+}
+/*
+TENGO QUE OBTENER:
+    0,0  -- 0-2
+    2,0  -- 2-2
+        {1, 0, 0},
+        {1, 1, 0},
+        {1, 1, 1}
+
+ */
+```
+
+
+```Java
+
+// Esto es un ejemplo de código
+public class Main {
+
+    public static void imprime(int[][] matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int n_filas = 4;
+        int n_columnas = 4;
+        int[][] matriz = new int[n_filas][n_columnas];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if ( i==0 || i ==matriz[i].length-1 || j==0 || j ==matriz[j].length-1)    {
+                    matriz[i][j] = 0;
+                }
+                else{
+                    matriz[i][j] = 1;
+                }
+            }
+        }
+
+        imprime(matriz);
+
+    }
+}
+/*
+TENGO QUE OBTENER:
+
+        {0, 0, 0, 0},
+        {0, 1, 1, 0},
+        {0, 1, 1, 0},
+        {0, 0, 0, 0},
+
+        {0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0, 0, 1, 0},
+        {0, 1, 0, 1, 1, 0, 1, 0},
+        {0, 1, 0, 1, 1, 0, 1, 0},
+        {0, 1, 0, 0, 0, 0, 1, 0},
+        {0, 1, 1, 1, 1, 1, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0},
+
+
+ */
+```
