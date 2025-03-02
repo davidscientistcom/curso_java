@@ -1,0 +1,5 @@
+Estos ejemplos son bastante mas complejos que los que hemos visto en clase , pero la idea es que os fijéis 
+en que con lo que hemos visto se puede hacer cosas muy chulas.
+
+Por tanto intentad leerlos y comprenderlos, ejecutarlo en modo de depuración.
+
