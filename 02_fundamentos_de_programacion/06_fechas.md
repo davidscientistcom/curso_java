@@ -251,3 +251,67 @@ public class EjemplosFormato {
     }
 }
 ```
+
+
+
+## Curiosidades sobre el tiempo y las fechas en informática
+
+Al trabajar con fechas y horas en programación, especialmente en sistemas distribuidos o bases de datos, es importante conocer algunas anomalías y curiosidades históricas que pueden provocar errores sutiles si no se tienen en cuenta. A continuación, se recopilan algunos de los casos más relevantes.
+
+
+
+1. Existen fechas que nunca han existido
+
+Uno de los ejemplos más conocidos es el del cambio de calendario juliano al gregoriano. En muchos países europeos, al adoptar el calendario gregoriano en el siglo XVI, se eliminaron 10 días del calendario para corregir el desfase acumulado con respecto al año solar.
+	•	En España, el cambio se hizo en 1582:
+El día jueves 4 de octubre fue seguido directamente por el viernes 15 de octubre, lo que significa que los días del 5 al 14 de octubre de 1582 no existieron.
+
+Este tipo de saltos puede causar errores en programas que intenten validar o calcular diferencias entre fechas históricas sin tener en cuenta este ajuste.
+
+
+
+1. Hay instantes del tiempo que se repiten
+
+Esto ocurre en los países que aplican el horario de verano (DST). Al final del horario de verano, se retrasa el reloj una hora, lo que provoca que una misma hora ocurra dos veces en el mismo día.
+	•	Ejemplo típico en España:
+	•	A las 03:00 del último domingo de octubre, el reloj se retrasa a las 02:00, por lo que el intervalo de las 02:00 a 03:00 ocurre dos veces.
+	•	Esto genera ambigüedad horaria: una marca de tiempo como 2023-10-29 02:30 puede referirse a dos momentos distintos.
+
+Este fenómeno puede causar problemas en bases de datos, logs, sistemas financieros y procesos automatizados si no se maneja correctamente la zona horaria con información de DST.
+
+
+
+1. Hay instantes que no existen
+
+También debido al horario de verano. Al principio del horario de verano, los relojes se adelantan una hora, lo que provoca que haya una hora que nunca llega a ocurrir.
+	•	En España:
+	•	A las 02:00 del último domingo de marzo, se adelanta a las 03:00.
+	•	Por tanto, no existen las 02:00 a 02:59 de ese día.
+
+Si se intenta registrar o procesar un evento en ese rango inexistente, puede haber errores o excepciones si no se manejan correctamente las zonas horarias.
+
+
+1. El huso horario de España no coincide con su posición geográfica
+
+Por meridiano, España debería estar en el UTC+0 (como Portugal o Reino Unido), ya que el meridiano de Greenwich pasa por Castellón y Aragón.
+
+Sin embargo, en 1940, durante la dictadura franquista, se adelantó el reloj una hora para alinearse con la hora de Berlín (UTC+1), siguiendo el ejemplo de la Alemania nazi durante la Segunda Guerra Mundial.
+
+Aunque el cambio debía ser provisional, nunca se volvió al horario original. Por tanto, España mantiene hasta hoy un horario que no corresponde con su ubicación geográfica, y durante el horario de verano se encuentra incluso en UTC+2.
+
+Esto afecta especialmente a temas de productividad, sueño y sincronización con países vecinos, y también puede ser relevante en sistemas que asuman que España está en UTC+0 por su posición.
+
+
+
+1. Las zonas horarias cambian a lo largo del tiempo
+
+Las zonas horarias no son fijas. Pueden cambiar por decisión política o legal. Países o regiones cambian:
+	•	Su uso o no del horario de verano.
+	•	Su huso horario base.
+	•	Sus reglas de transición entre invierno y verano.
+
+Por ejemplo:
+	•	Rusia eliminó el horario de verano en 2011 y lo reintrodujo parcialmente más tarde.
+	•	Marruecos aplica el horario de verano todo el año salvo durante el Ramadán.
+
+Por eso es fundamental usar bases de datos de zonas horarias actualizadas, como la IANA Time Zone Database (también conocida como tzdata), que los sistemas operativos y lenguajes como Java, Python o .NET utilizan internamente.
