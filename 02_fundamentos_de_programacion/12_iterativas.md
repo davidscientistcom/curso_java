@@ -183,4 +183,27 @@ public class ForEachEjemplo {
 }
 ```
 
+## Ejemplo 6: Diferencia entre bucle normal y bucle **for each** 
+```java
+public class Bucle {
+
+        public static void main(String[] args) {
+            String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes"};
+
+            // Bucle for-each para recorrer el arreglo
+
+            for (String dia : dias) {
+                System.out.println("Día: " + dia);
+
+            }
+
+            for (int i=0; i<5; i++) {
+                System.out.println("El elemento " + dias[i]+" está en la posición: "+i);
+
+            }
+        }
+    }
+
+```
+
 

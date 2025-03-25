@@ -1,0 +1,32 @@
+Scanner sc = new Scanner(System.in);
+List<String> frutas = new ArrayList<>();
+boolean continuar = true;
+
+while (continuar) {
+    System.out.println("--- Introduce una fruta (escribe 'FIN' para terminar, 'VER' para ver la lista o 'BORRAR' para borrar una fruta). ---");
+    String palabra = sc.nextLine().trim().toLowerCase();
+
+    if (palabra.equals("fin")) {
+        continuar = false;
+    } else if (palabra.equals("ver")) {
+        System.out.println("Lista de frutas: " + frutas);
+    } else if (palabra.equals("borrar")) {
+        System.out.println("--- Escribe el nombre de la fruta que quieres borrar. ---");
+        String frutaBorrar = sc.nextLine().trim().toLowerCase();
+
+        if (frutas.contains(frutaBorrar)) {
+            frutas.remove(frutaBorrar);
+            System.out.println("--- Fruta '" + frutaBorrar + "' eliminada de la lista. ---");
+        } else {
+            System.out.println("--- La fruta '" + frutaBorrar + "' no está en la lista. ---");
+        }
+    } else if (frutas.contains(palabra)) {
+        System.out.println("--- Esta fruta ya está en la lista, no puedes repetirla. ---");
+    } else {
+        frutas.add(palabra);
+        System.out.println("--- Fruta añadida a la lista con éxito. ---");
+    }
+}
+
+System.out.println("Has terminado la lista. La lista de la compra final es: " + frutas);
+sc.close();
