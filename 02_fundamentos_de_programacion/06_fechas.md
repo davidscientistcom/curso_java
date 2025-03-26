@@ -27,7 +27,7 @@ Además, para trabajar con formatos y conversiones se utiliza la clase **DateTim
   LocalDate fechaActual = LocalDate.now();
   System.out.println("Fecha actual: " + fechaActual);
   ```
-
+  https://en.wikipedia.org/wiki/ISO_8601
 - **LocalDateTime.now():**  
   Obtiene la fecha y la hora actual.
 
