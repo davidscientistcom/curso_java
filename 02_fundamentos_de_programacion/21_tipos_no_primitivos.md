@@ -278,7 +278,7 @@ int a = 123;
 // System.out.println(a.toString());  //  Error: int no tiene métodos
 
 Integer b = 123;
-System.out.println(b.toString());  // ✅ "123"
+System.out.println(b.toString());  //  "123"
 ```
 
 
@@ -344,7 +344,7 @@ public static void mostrar(Integer numero) {
 
 public static void main(String[] args) {
     int x = 100;
-    mostrar(x);  // ✅ Autoboxing de int a Integer
+    mostrar(x);  // Autoboxing de int a Integer
 }
 ```
 
@@ -363,7 +363,7 @@ Java **no crea dos objetos distintos**, sino que **recicla el mismo objeto** si 
 A este mecanismo se le llama **Integer Cache**.
 
 
-## ⚠️ Fuera de ese rango, no hay caché
+## Fuera de ese rango, no hay caché
 
 ```java
 Integer x = 200;
@@ -374,13 +374,13 @@ System.out.println(x == y);  // false
 En este caso, **se crean dos objetos diferentes**, y por eso el `==` da `false`, aunque el valor interno sea el mismo.
 
 
-## 📌 ¿Qué hace `==` con objetos?
+## ¿Qué hace `==` con objetos?
 
 - `==` compara si **las referencias apuntan al mismo objeto en memoria**
 - `.equals()` compara si **el contenido (valor) es igual**
 
 
-## 🧪 Ejemplo completo para clase:
+## Ejemplo completo para clase:
 
 ```java
 public class CacheEnteros {
@@ -400,7 +400,7 @@ public class CacheEnteros {
 ```
 
 
-## 🔍 ¿Por qué ocurre esto?
+##  ¿Por qué ocurre esto?
 
 Internamente, Java usa un array estático con valores precargados:
 
