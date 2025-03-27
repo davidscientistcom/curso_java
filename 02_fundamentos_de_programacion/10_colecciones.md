@@ -224,3 +224,4 @@ public class EjemploTreeMap {
     }
 }
 ```
+Esto es lo que me generaste una vez, pero lo veo poco explicado no me queda bien explicado sobretod para que se usa cada coleccion y con ejemplos mas de la vida real, lo que esta es correcto pero añadele por favor a cada uno una explicacion mas detallada y con ejemplos reales
