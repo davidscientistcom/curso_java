@@ -1,195 +1,207 @@
 # Teoría de las Colecciones en Java
 
-Las colecciones son estructuras de datos que permiten almacenar y gestionar grupos de objetos de forma dinámica. Java proporciona el **Framework de Colecciones** (Java Collections Framework, JCF), que ofrece una serie de interfaces y clases que facilitan la manipulación de grupos de elementos. Entre las principales interfaces del framework se encuentran:
+Las **colecciones** en Java son estructuras de datos que permiten almacenar, gestionar y manipular grupos de objetos de manera eficiente y flexible. Java proporciona el **Framework de Colecciones** (Java Collections Framework, JCF), que está diseñado para manejar distintos tipos de agrupaciones de objetos (listas, conjuntos, mapas, colas, etc.) y permite realizar operaciones como inserción, eliminación, búsqueda y recorrido de elementos.
 
-- **Collection:**  
-  Es la raíz de la jerarquía de colecciones. Define operaciones básicas como agregar, eliminar y comprobar si contiene un elemento.
-
-- **List:**  
-  Una colección ordenada que permite elementos duplicados. Las implementaciones comunes son:
-  - **ArrayList:** Basada en un array dinámico, de acceso rápido por índice.
-  - **LinkedList:** Basada en una lista enlazada, adecuada para inserciones y eliminaciones frecuentes.
-
-- **Set:**  
-  Una colección que no permite elementos duplicados. Algunas implementaciones son:
-  - **HashSet:** Basada en una tabla hash, sin orden garantizado.
-  - **TreeSet:** Basada en un árbol binario (generalmente un árbol rojo-negro) y que almacena los elementos en orden natural o según un comparador.
-
-- **Map:**  
-  No implementa la interfaz Collection, pero es parte del framework. Permite asociar claves con valores (pares clave-valor). Ejemplos:
-  - **HashMap:** Basada en una tabla hash, sin orden específico.
-  - **TreeMap:** Implementa un árbol binario y ordena las claves de forma natural o mediante un comparador.
-
-El Framework de Colecciones proporciona métodos comunes para agregar, eliminar, buscar y recorrer los elementos de la colección. Además, estas estructuras son inmutables o modificables según la implementación y permiten utilizar genéricos para garantizar la seguridad en tiempo de compilación.
+A continuación se explican las interfaces principales y sus implementaciones más comunes, con ejemplos prácticos inspirados en situaciones reales y ampliados con operaciones frecuentes.
 
 
 
-# Ejemplos Prácticos de Colecciones en Java
+## 1. Interfaz Collection
 
-A continuación se muestran ejemplos prácticos organizados de lo más sencillo a lo más complejo.
+Es la interfaz base para la mayoría de las colecciones. Define operaciones generales como:
+- `add(element)`: añadir un elemento.
+- `remove(element)`: eliminar un elemento.
+- `contains(element)`: verificar si existe un elemento.
+- `size()`: conocer el número de elementos.
+- `isEmpty()`: verificar si está vacía.
+- `clear()`: vaciar la colección.
 
 
 
-## Ejemplo 1: Uso de ArrayList
+## 2. List: Colecciones ordenadas y que permiten duplicados
 
-**Descripción:**  
-Se crea una lista de cadenas (por ejemplo, nombres de frutas), se añaden algunos elementos, se recorre la lista e imprime cada elemento.
+Una **List** mantiene el orden de inserción y permite elementos duplicados. Se accede a los elementos por índice, como si fuera un array, pero con tamaño dinámico.
+
+### 2.1 ArrayList
+
+**Cuándo usarlo:** Cuando necesitas acceder frecuentemente a los elementos por su posición (por índice), y las inserciones y eliminaciones no son muy frecuentes.
+
+**Ejemplo real:** Lista de productos en un carrito de compras.
 
 ```java
 import java.util.ArrayList;
 import java.util.List;
 
-public class EjemploArrayList {
+public class CarritoCompra {
     public static void main(String[] args) {
-        // Crear una lista de tipo String
-        List<String> frutas = new ArrayList<>();
-        
-        // Agregar elementos a la lista
-        frutas.add("Manzana");
-        frutas.add("Banana");
-        frutas.add("Naranja");
-        frutas.add("Kiwi");
-        
-        // Recorrer la lista usando un bucle for-each e imprimir los elementos
-        System.out.println("Lista de frutas:");
-        for (String fruta : frutas) {
-            System.out.println(fruta);
+        List<String> carrito = new ArrayList<>();
+        carrito.add("Pan");
+        carrito.add("Leche");
+        carrito.add("Huevos");
+        carrito.add("Leche"); // Producto duplicado
+
+        System.out.println("Productos en el carrito:");
+        for (String producto : carrito) {
+            System.out.println(producto);
         }
-        
-        // Mostrar el tamaño de la lista
-        System.out.println("Número de frutas: " + frutas.size());
+
+        // Buscar un producto
+        System.out.println("¿El carrito contiene Leche? " + carrito.contains("Leche"));
+
+        // Eliminar un producto
+        carrito.remove("Leche"); // Elimina la primera ocurrencia
+        System.out.println("Carrito tras eliminar una Leche:");
+        System.out.println(carrito);
+
+        // Vaciar el carrito
+        carrito.clear();
+        System.out.println("¿Carrito vacío? " + carrito.isEmpty());
     }
 }
 ```
 
 
 
-## Ejemplo 2: Uso de LinkedList
+### 2.2 LinkedList
 
-**Descripción:**  
-Se utiliza una LinkedList para almacenar una serie de números enteros. Se muestran operaciones de adición, eliminación y recorrido.
+**Cuándo usarlo:** Cuando necesitas insertar o eliminar elementos frecuentemente en cualquier posición de la lista.
+
+**Ejemplo real:** Cola de pacientes en una sala de espera.
 
 ```java
 import java.util.LinkedList;
 import java.util.List;
 
-public class EjemploLinkedList {
+public class SalaDeEspera {
     public static void main(String[] args) {
-        // Crear una LinkedList de tipo Integer
-        List<Integer> numeros = new LinkedList<>();
-        
-        // Agregar elementos a la lista
-        numeros.add(10);
-        numeros.add(20);
-        numeros.add(30);
-        numeros.add(40);
-        
-        // Recorrer la lista e imprimir cada número
-        System.out.println("Contenido de la LinkedList:");
-        for (int num : numeros) {
-            System.out.println(num);
-        }
-        
-        // Eliminar un elemento (por ejemplo, el número 20)
-        numeros.remove(Integer.valueOf(20));
-        System.out.println("Después de eliminar el número 20:");
-        System.out.println(numeros);
+        LinkedList<String> pacientes = new LinkedList<>();
+        pacientes.add("Ana");
+        pacientes.add("Carlos");
+        pacientes.add("Luis");
+
+        // Insertar al inicio
+        pacientes.addFirst("Sofía");
+
+        // Insertar al final
+        pacientes.addLast("Pedro");
+
+        System.out.println("Pacientes en espera:");
+        System.out.println(pacientes);
+
+        // Atender al primer paciente (eliminar al principio)
+        String atendido = pacientes.removeFirst();
+        System.out.println("Paciente atendido: " + atendido);
+        System.out.println("Restantes: " + pacientes);
+
+        // Eliminar por nombre
+        pacientes.remove("Carlos");
+        System.out.println("Después de eliminar a Carlos: " + pacientes);
     }
 }
 ```
 
 
 
-## Ejemplo 3: Uso de HashSet
+## 3. Set: Conjuntos sin elementos duplicados
 
-**Descripción:**  
-Se crea un HashSet para almacenar números enteros sin duplicados. Se añade una serie de números, incluyendo duplicados, y se recorre el conjunto.
+Un **Set** es una colección que no permite duplicados y no tiene acceso por índice.
+
+### 3.1 HashSet
+
+**Cuándo usarlo:** Cuando necesitas almacenar elementos únicos sin importar el orden.
+
+**Ejemplo real:** Lista de correos electrónicos únicos para enviar una newsletter.
 
 ```java
 import java.util.HashSet;
 import java.util.Set;
 
-public class EjemploHashSet {
+public class Newsletter {
     public static void main(String[] args) {
-        // Crear un HashSet de tipo Integer
-        Set<Integer> numeros = new HashSet<>();
-        
-        // Agregar elementos a la colección (los duplicados se ignoran)
-        numeros.add(10);
-        numeros.add(20);
-        numeros.add(30);
-        numeros.add(20); // Este duplicado no se añadirá
-        
-        // Recorrer el HashSet e imprimir los elementos
-        System.out.println("Contenido del HashSet:");
-        for (int num : numeros) {
-            System.out.println(num);
+        Set<String> correos = new HashSet<>();
+        correos.add("ana@gmail.com");
+        correos.add("luis@gmail.com");
+        correos.add("ana@gmail.com"); // Duplicado ignorado
+
+        System.out.println("Correos registrados:");
+        for (String email : correos) {
+            System.out.println(email);
         }
+
+        // Comprobar si un correo está registrado
+        System.out.println("¿Registrado ana@gmail.com? " + correos.contains("ana@gmail.com"));
+
+        // Eliminar un correo
+        correos.remove("luis@gmail.com");
+        System.out.println("Correos tras eliminar a Luis: " + correos);
     }
 }
 ```
 
 
 
-## Ejemplo 4: Uso de TreeSet
+### 3.2 TreeSet
 
-**Descripción:**  
-Se utiliza un TreeSet para almacenar cadenas y ordenarlas de forma natural (alfabéticamente).
+**Cuándo usarlo:** Cuando necesitas elementos únicos ordenados (alfabética o numéricamente).
+
+**Ejemplo real:** Lista de palabras clave ordenadas alfabéticamente.
 
 ```java
 import java.util.Set;
 import java.util.TreeSet;
 
-public class EjemploTreeSet {
+public class PalabrasClave {
     public static void main(String[] args) {
-        // Crear un TreeSet de tipo String
-        Set<String> nombres = new TreeSet<>();
-        
-        // Agregar elementos a la colección
-        nombres.add("Carlos");
-        nombres.add("Ana");
-        nombres.add("Beatriz");
-        nombres.add("David");
-        
-        // Recorrer el TreeSet e imprimir los elementos (ordenados alfabéticamente)
-        System.out.println("Nombres en orden alfabético:");
-        for (String nombre : nombres) {
-            System.out.println(nombre);
+        Set<String> keywords = new TreeSet<>();
+        keywords.add("java");
+        keywords.add("programacion");
+        keywords.add("colections");
+        keywords.add("arrays");
+
+        System.out.println("Palabras clave ordenadas:");
+        for (String palabra : keywords) {
+            System.out.println(palabra);
         }
+
+        // Eliminar una palabra
+        keywords.remove("arrays");
+        System.out.println("Después de eliminar 'arrays': " + keywords);
     }
 }
 ```
 
 
 
-## Ejemplo 5: Uso de HashMap
+## 4. Map: Pares clave-valor
 
-**Descripción:**  
-Se crea un HashMap para asociar claves (por ejemplo, códigos de identificación) a valores (nombres de personas). Se muestran operaciones de inserción, búsqueda y recorrido.
+Un **Map** no hereda de `Collection`, pero forma parte del JCF. Almacena pares `clave -> valor` y no permite claves duplicadas.
+
+### 4.1 HashMap
+
+**Cuándo usarlo:** Cuando necesitas una estructura rápida para buscar valores por clave, sin importar el orden.
+
+**Ejemplo real:** Diccionario de términos (clave = palabra, valor = definición).
 
 ```java
 import java.util.HashMap;
 import java.util.Map;
 
-public class EjemploHashMap {
+public class Diccionario {
     public static void main(String[] args) {
-        // Crear un HashMap donde la clave es String y el valor también es String
-        Map<String, String> personas = new HashMap<>();
-        
-        // Agregar pares clave-valor al mapa
-        personas.put("001", "Ana");
-        personas.put("002", "Carlos");
-        personas.put("003", "Beatriz");
-        personas.put("004", "David");
-        
-        // Buscar un valor a partir de una clave
-        String nombre = personas.get("002");
-        System.out.println("La persona con código 002 es: " + nombre);
-        
-        // Recorrer el HashMap y mostrar todas las entradas
-        System.out.println("Listado completo de personas:");
-        for (Map.Entry<String, String> entrada : personas.entrySet()) {
-            System.out.println("Código: " + entrada.getKey() + ", Nombre: " + entrada.getValue());
+        Map<String, String> definiciones = new HashMap<>();
+        definiciones.put("Array", "Estructura de datos secuencial");
+        definiciones.put("HashMap", "Estructura clave-valor sin orden");
+
+        // Buscar definición
+        System.out.println("Definición de Array: " + definiciones.get("Array"));
+
+        // Eliminar una entrada
+        definiciones.remove("Array");
+        System.out.println("Diccionario tras eliminar 'Array': " + definiciones);
+
+        // Recorrer todas las entradas
+        for (Map.Entry<String, String> entry : definiciones.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 }
@@ -197,31 +209,159 @@ public class EjemploHashMap {
 
 
 
-## Ejemplo 6: Uso de TreeMap
+### 4.2 TreeMap
 
-**Descripción:**  
-Se utiliza un TreeMap para almacenar claves y valores, lo que permite que las claves se mantengan en orden natural.
+**Cuándo usarlo:** Cuando necesitas mantener las claves ordenadas.
+
+**Ejemplo real:** Agenda de clases (clave = hora, valor = asignatura).
 
 ```java
 import java.util.Map;
 import java.util.TreeMap;
 
-public class EjemploTreeMap {
+public class AgendaClases {
     public static void main(String[] args) {
-        // Crear un TreeMap de tipo <Integer, String>
-        Map<Integer, String> estudiantes = new TreeMap<>();
-        
-        // Agregar pares clave-valor
-        estudiantes.put(3, "María");
-        estudiantes.put(1, "Juan");
-        estudiantes.put(2, "Luis");
-        
-        // Recorrer el TreeMap e imprimir los elementos (ordenados por clave)
-        System.out.println("Estudiantes ordenados por clave:");
-        for (Map.Entry<Integer, String> entrada : estudiantes.entrySet()) {
-            System.out.println("Clave: " + entrada.getKey() + ", Nombre: " + entrada.getValue());
+        Map<String, String> horario = new TreeMap<>();
+        horario.put("08:00", "Matemáticas");
+        horario.put("10:00", "Programación");
+        horario.put("09:00", "Inglés");
+
+        // Mostrar clases ordenadas por hora
+        System.out.println("Horario:");
+        for (Map.Entry<String, String> clase : horario.entrySet()) {
+            System.out.println(clase.getKey() + " - " + clase.getValue());
         }
+
+        // Buscar una clase
+        System.out.println("Clase a las 09:00: " + horario.get("09:00"));
+
+        // Eliminar una clase
+        horario.remove("10:00");
+        System.out.println("Horario actualizado: " + horario);
     }
 }
 ```
-Esto es lo que me generaste una vez, pero lo veo poco explicado no me queda bien explicado sobretod para que se usa cada coleccion y con ejemplos mas de la vida real, lo que esta es correcto pero añadele por favor a cada uno una explicacion mas detallada y con ejemplos reales
+
+- Usa `ArrayList` para accesos rápidos por índice y cuando el orden importa.
+- Usa `LinkedList` si harás muchas inserciones/borrados intermedios.
+- Usa `HashSet` para eliminar duplicados y verificar existencia rápida.
+- Usa `TreeSet` para mantener elementos únicos ordenados.
+- Usa `HashMap` si quieres asociar claves y valores sin preocuparte del orden.
+- Usa `TreeMap` para mantener las claves en orden natural o con un comparador.
+
+v# Teoría de las Colecciones en Java
+
+Las **colecciones** en Java son estructuras de datos que permiten almacenar, gestionar y manipular grupos de objetos de manera eficiente y flexible. Java proporciona el **Framework de Colecciones** (Java Collections Framework, JCF), que está diseñado para manejar distintos tipos de agrupaciones de objetos (listas, conjuntos, mapas, colas, etc.) y permite realizar operaciones como inserción, eliminación, búsqueda y recorrido de elementos.
+
+
+
+## 5. Ejemplos de uso en problemas reales
+
+A continuación, se presentan situaciones concretas de problemas del mundo real y se argumenta qué colección es la más adecuada y por qué.
+
+### Ejemplo 1: Registro de acceso de usuarios por orden de llegada
+
+**Problema:** Se quiere almacenar el orden en el que los usuarios acceden a una página web para luego analizar el flujo de navegación.
+
+**Colección recomendada:** `LinkedList`
+
+**Razón:** Permite insertar rápidamente al final y recorrer en orden de llegada.
+
+```java
+LinkedList<String> accesos = new LinkedList<>();
+accesos.add("usuario1");
+accesos.add("usuario2");
+accesos.add("usuario3");
+System.out.println("Último usuario en llegar: " + accesos.getLast());
+```
+
+
+
+### Ejemplo 2: Autocompletado de términos en un buscador
+
+**Problema:** Mostrar términos previamente buscados ordenados alfabéticamente, sin duplicados.
+
+**Colección recomendada:** `TreeSet`
+
+**Razón:** Garantiza orden natural y evita duplicados.
+
+```java
+TreeSet<String> busquedas = new TreeSet<>();
+busquedas.add("java");
+busquedas.add("javascript");
+busquedas.add("java"); // Ignorado
+System.out.println("Términos sugeridos: " + busquedas);
+```
+
+
+
+### Ejemplo 3: Gestión de inventario con códigos de producto
+
+**Problema:** Se desea asociar cada código de producto a su descripción, y permitir búsquedas rápidas por código.
+
+**Colección recomendada:** `HashMap`
+
+**Razón:** Ofrece acceso rápido a través de clave y evita duplicados de clave.
+
+```java
+HashMap<String, String> inventario = new HashMap<>();
+inventario.put("A101", "Taladro eléctrico");
+inventario.put("A102", "Destornillador");
+System.out.println("Producto A101: " + inventario.get("A101"));
+```
+
+
+
+### Ejemplo 4: Alumnos registrados en un curso (sin repetidos)
+
+**Problema:** Evitar que un alumno se registre más de una vez.
+
+**Colección recomendada:** `HashSet`
+
+**Razón:** Almacena elementos únicos y permite comprobar rápidamente si ya existe.
+
+```java
+HashSet<String> alumnos = new HashSet<>();
+alumnos.add("Juan Pérez");
+alumnos.add("Ana Gómez");
+alumnos.add("Juan Pérez"); // Ignorado
+System.out.println("Total alumnos únicos: " + alumnos.size());
+```
+
+
+
+### Ejemplo 5: Encuesta donde se deben mantener las respuestas en orden
+
+**Problema:** Recoger las respuestas en el mismo orden en el que las personas las proporcionan y permitir duplicados.
+
+**Colección recomendada:** `ArrayList`
+
+**Razón:** Mantiene el orden de inserción y permite duplicados.
+
+```java
+ArrayList<String> respuestas = new ArrayList<>();
+respuestas.add("Sí");
+respuestas.add("No");
+respuestas.add("Sí");
+System.out.println("Respuestas: " + respuestas);
+```
+
+
+
+### Ejemplo 6: Agenda telefónica ordenada por nombre
+
+**Problema:** Gestionar contactos y poder acceder a ellos ordenadamente por nombre.
+
+**Colección recomendada:** `TreeMap`
+
+**Razón:** Ordena las claves automáticamente.
+
+```java
+TreeMap<String, String> agenda = new TreeMap<>();
+agenda.put("Luis", "612345678");
+agenda.put("Ana", "654321000");
+agenda.put("Carlos", "698745632");
+System.out.println("Agenda ordenada: " + agenda);
+```
+
+
