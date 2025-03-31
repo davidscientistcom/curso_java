@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## 1. Introducción a ArrayList
 
 La clase `ArrayList` forma parte del framework de colecciones de Java y se utiliza para almacenar una lista dinámica de elementos. A diferencia de los arrays tradicionales, un `ArrayList` puede cambiar de tamaño dinámicamente conforme se van agregando o eliminando elementos. Está basada en un array interno y ofrece acceso aleatorio a sus elementos.

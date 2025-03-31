@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Capítulo: Variables en Java – Conceptos, Uso y Ejemplos
 
 En la programación, **una variable es un elemento fundamental** que permite almacenar información en la memoria del ordenador durante la ejecución de un programa. Imagina que estás en una cocina: una variable es como una caja etiquetada en la que puedes guardar ingredientes. La etiqueta (el nombre) te dice qué contiene, y el contenido (el valor) puede cambiar según lo que necesites preparar. Sin variables, cada dato que necesites en el programa tendría que estar "escrito" directamente en el código, lo que limitaría enormemente la flexibilidad y la capacidad de realizar cálculos, comparaciones o almacenar información del usuario.

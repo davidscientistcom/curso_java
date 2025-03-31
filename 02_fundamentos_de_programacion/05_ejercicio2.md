@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## Ejercicios Prácticos
 
 ### Ejercicio 1: Calculadora Básica  

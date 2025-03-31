@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## Interfaz Básica de Intellij
 
 Este tutorial describe los pasos para configurar el IDE, la primera vez que lo iniciamos justo después de instalarlo.

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # **Arrays en Java**
 Los arrays en Java son estructuras de datos que permiten almacenar múltiples valores del mismo tipo en una única variable. Se dividen en **arrays de una dimensión** y **arrays de dos dimensiones**.
 

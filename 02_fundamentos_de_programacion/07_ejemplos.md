@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## Ejemplo 1: Mostrar la Fecha y la Fecha y Hora Actual
 
 **Descripción:**  

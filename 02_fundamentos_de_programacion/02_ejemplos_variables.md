@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Capítulo: Variables y Operaciones en Java  
 *(Enfocado en ejemplos prácticos, incluyendo booleanos y cadenas)*
 

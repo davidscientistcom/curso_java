@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Condicionales en Java
 
 Las estructuras condicionales permiten que un programa tome decisiones y ejecute diferentes bloques de código según se cumplan o no determinadas condiciones. Esto es fundamental para crear aplicaciones dinámicas que respondan de manera distinta según la entrada del usuario o el estado del sistema.

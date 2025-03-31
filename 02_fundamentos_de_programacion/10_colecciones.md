@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Teoría de las Colecciones en Java
 
 Las **colecciones** en Java son estructuras de datos que permiten almacenar, gestionar y manipular grupos de objetos de manera eficiente y flexible. Java proporciona el **Framework de Colecciones** (Java Collections Framework, JCF), que está diseñado para manejar distintos tipos de agrupaciones de objetos (listas, conjuntos, mapas, colas, etc.) y permite realizar operaciones como inserción, eliminación, búsqueda y recorrido de elementos.

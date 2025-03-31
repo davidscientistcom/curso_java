@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Trabajando con Fechas en Java
 
 En cualquier aplicación es muy común necesitar trabajar con fechas y horas: por ejemplo, para registrar la fecha de nacimiento de un usuario, programar eventos o calcular plazos. Desde Java 8 se introdujo el paquete **java.time**, que proporciona una API más robusta, intuitiva y segura para manipular fechas y tiempos.

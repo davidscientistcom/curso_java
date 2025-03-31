@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Lectura y Escritura en Consola en Java
 
 La interacción con la consola es fundamental en las aplicaciones de línea de comandos, ya que permite:

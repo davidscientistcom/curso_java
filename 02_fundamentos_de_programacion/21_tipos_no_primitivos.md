@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## Diferencias entre tipos primitivos y clases envoltorio en Java
 
 En Java, existen dos grandes grupos de tipos de datos:

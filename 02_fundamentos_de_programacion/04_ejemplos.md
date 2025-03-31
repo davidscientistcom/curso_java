@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## Ejemplo 1: Operaciones Aritméticas con Números
 
 Este programa lee dos números enteros introducidos por el usuario, realiza operaciones aritméticas (suma, resta, multiplicación y división) y muestra los resultados por consola.

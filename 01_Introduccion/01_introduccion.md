@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Capítulo 1: Introducción a Java
 
 ## 1.1. ¿Qué es un lenguaje de programación?

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Funciones en Java: Aspectos Básicos y Consideraciones
 
 En Java, todas las funciones (llamadas métodos) deben definirse dentro de una clase. Para simular funciones "libres" (como en Python o C), utilizamos métodos estáticos. Esto implica que, en el método `main` (que es estático), podemos invocar directamente otros métodos estáticos sin necesidad de crear una instancia de la clase. Sin embargo, si deseáramos llamar a métodos no estáticos, tendríamos que instanciar la clase primero.

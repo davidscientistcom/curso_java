@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ### **Paso de Parámetros en Java: Por Valor vs. Por Referencia**
 En Java, todos los parámetros se **pasan por valor**, pero el comportamiento varía dependiendo de si el valor es un **tipo primitivo** o una **referencia a un objeto**. 
 

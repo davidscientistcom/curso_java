@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 ## ¿Qué significa `100_000`?
 
 Es exactamente igual que escribir `100000`.

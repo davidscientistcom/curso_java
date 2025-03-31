@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../images/banner_eoi.png" width="100%" />
+</p>
+
 # Teoría de los Bucles en Java
 
 Los bucles (o estructuras de repetición) permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición determinada. Son fundamentales para procesar colecciones de datos, realizar cálculos iterativos o simplemente repetir tareas. En Java, las principales estructuras de bucle son:
